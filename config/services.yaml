@@ -22,3 +22,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\YouTubeService:
+        arguments:
+            $apiKey: '%env(GOOGLE_API_KEY)%'
+
+
+
+    App\Controller\YouTubeOAuthController:
+        public: true
+        arguments:
+            $clientId: '%env(GOOGLE_CLIENT_ID)%'
+            $clientSecret: '%env(GOOGLE_CLIENT_SECRET)%'
+            $redirectUri: '%env(GOOGLE_CLIENT_REDIRECT)%'
